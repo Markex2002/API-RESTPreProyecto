@@ -19,6 +19,5 @@ public class Administrador extends Usuario {
     @EqualsAndHashCode.Include
     private long id;
     private String nombre;
-
-
+    private int privilegeLevel;
 }

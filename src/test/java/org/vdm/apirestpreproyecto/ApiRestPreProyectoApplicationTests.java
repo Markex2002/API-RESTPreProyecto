@@ -3,10 +3,8 @@ package org.vdm.apirestpreproyecto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.vdm.apirestpreproyecto.domain.Artista;
-import org.vdm.apirestpreproyecto.domain.Empresa;
-import org.vdm.apirestpreproyecto.domain.Imagen;
-import org.vdm.apirestpreproyecto.domain.OfertaTrabajo;
+import org.vdm.apirestpreproyecto.domain.*;
+import org.vdm.apirestpreproyecto.repository.AdministradorRepository;
 import org.vdm.apirestpreproyecto.repository.ArtistaRepository;
 import org.vdm.apirestpreproyecto.repository.EmpresaRepository;
 import org.vdm.apirestpreproyecto.repository.ImagenRepository;
@@ -23,6 +21,8 @@ class ApiRestPreProyectoApplicationTests {
     EmpresaRepository empresaRepository;
     @Autowired
     ImagenRepository imagenRepository;
+    @Autowired
+    AdministradorRepository administradorRepository;
 
     @Test
     void contextLoads() {}
@@ -33,7 +33,7 @@ class ApiRestPreProyectoApplicationTests {
     }
 
     @Test
-    void pruebaCRUDArtista(){
+    void pruebaCRUDTodo(){
         //PRUEBA CREAR Y GUARDAR UN ARTISTA
         Artista artista1 = Artista.builder()
                 .nombre("VanGogh")
@@ -57,6 +57,30 @@ class ApiRestPreProyectoApplicationTests {
         Empresa empresa2 = new Empresa();
         empresa2.setNombreEmpresa("Capcom");
         empresaRepository.save(empresa2);
+
+        //Prueba crear y guardar varios Administradores
+        Administrador administrador1 = Administrador.builder()
+                .privilegeLevel(1)
+                .nombre("Maximo")
+                .build();
+        administradorRepository.save(administrador1);
+        Administrador administrador2 = Administrador.builder()
+                .privilegeLevel(2)
+                .nombre("Steven")
+                .build();
+        administradorRepository.save(administrador2);
+        Administrador administrador3 = Administrador.builder()
+                .privilegeLevel(3)
+                .nombre("Mario")
+                .build();
+        administradorRepository.save(administrador3);
+        Administrador administrador4 = Administrador.builder()
+                .privilegeLevel(2)
+                .nombre("Luigi")
+                .build();
+        administradorRepository.save(administrador4);
+
+
 
 
         //Prueba crear y guardar una Imagenes
