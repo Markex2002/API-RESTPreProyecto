@@ -72,6 +72,10 @@ public class ArtistaService {
                 resultado = artistaRepository.findByNombreContainingIgnoreCaseOrderByNombreAsc(buscarOptional.get());
             } else if (buscarOptional.isPresent() && "desc".equalsIgnoreCase(buscarOptional.get())) {
                 resultado = artistaRepository.findByNombreContainingIgnoreCaseOrderByNombreDesc(buscarOptional.get());
+            } else if (buscarOptional.isEmpty() && "asc".equalsIgnoreCase(ordenarOptional.get())) {
+                resultado = artistaRepository.findAllByOrderByNombreAsc();
+            } else if (buscarOptional.isEmpty() && "desc".equalsIgnoreCase(ordenarOptional.get())) {
+                resultado = artistaRepository.findAllByOrderByNombreDesc();
             }
         }
 

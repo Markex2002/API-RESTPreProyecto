@@ -45,10 +45,18 @@ class ApiRestPreProyectoApplicationTests {
                 .build();
         artistaRepository.save(artista2);
 
-        //Prueba crear y guardar una Empresa
+        //Prueba crear y guardar varias Empresa
         Empresa empresa = new Empresa();
-        empresa.setNombre("Nintendo");
+        empresa.setNombreEmpresa("Nintendo");
         empresaRepository.save(empresa);
+
+        Empresa empresa1 = new Empresa();
+        empresa1.setNombreEmpresa("Sega");
+        empresaRepository.save(empresa1);
+
+        Empresa empresa2 = new Empresa();
+        empresa2.setNombreEmpresa("Capcom");
+        empresaRepository.save(empresa2);
 
 
         //Prueba crear y guardar una Imagenes

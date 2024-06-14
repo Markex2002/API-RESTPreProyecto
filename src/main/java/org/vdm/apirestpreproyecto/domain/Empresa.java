@@ -21,12 +21,13 @@ public class Empresa extends Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private long id;
-    private String nombre;
+    private String nombreEmpresa;
+    private int numTlf;
+    private String nombreRepresentante;
 
 
     @OneToMany(mappedBy = "empresa")
     @JsonIgnore
     @ToString.Exclude
     private List<OfertaTrabajo> listadoOfertas;
-
 }
