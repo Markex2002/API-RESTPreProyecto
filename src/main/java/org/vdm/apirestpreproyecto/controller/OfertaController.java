@@ -28,7 +28,7 @@ public class OfertaController {
 
     @GetMapping(value = {"","/"}, params ={"!pagina", "!tamanio", "!buscar", "!ordenar"})
     public List<OfertaTrabajo> all() {
-        log.info("Accediendo a todos las artistas");
+        log.info("Accediendo a todas las ofertas");
         return ofertaService.all();
     }
 
@@ -49,7 +49,7 @@ public class OfertaController {
     public ResponseEntity<Map<String, Object>> all(@RequestParam(value = "pagina", defaultValue = "0") int pagina
             , @RequestParam(value = "tamanio", defaultValue = "3") int tamanio){
 
-        log.info("Accediendo a todos los Administradores con Paginacion");
+        log.info("Accediendo a todas las Ofertas con Paginacion");
         Map<String, Object> responseAll = this.ofertaService.all(pagina, tamanio);
 
         return ResponseEntity.ok(responseAll);

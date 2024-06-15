@@ -80,7 +80,7 @@ public class OfertaService {
             } else if (buscarOptional.isEmpty() && "asc".equalsIgnoreCase(ordenarOptional.get())) {
                 resultado = ofertaRepository.findAllByOrderByFechaPublicacionAsc();
             } else if (buscarOptional.isEmpty() && "desc".equalsIgnoreCase(ordenarOptional.get())) {
-                resultado = ofertaRepository.findAllByOrderByFechaPublicacionAsc();
+                resultado = ofertaRepository.findAllByOrderByFechaPublicacionDesc();
             }
         }
 
