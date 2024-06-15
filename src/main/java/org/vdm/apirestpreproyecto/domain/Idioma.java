@@ -3,14 +3,15 @@ package org.vdm.apirestpreproyecto.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
+
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 
 @Data
 @AllArgsConstructor
@@ -19,6 +20,7 @@ import java.util.Date;
 public class Idioma {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private long id;
 
     private String nombre;
@@ -28,13 +30,14 @@ public class Idioma {
     private Date ultimaActualizacion;
 
 
-    @ManyToOne()
-    @JoinColumn(name = "id_artista", nullable = false)
-    private Artista artista;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinTable(
+            name = "idioma_artista",
+            joinColumns = @JoinColumn(name = "id_Idioma", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "id_artista", referencedColumnName = "id_artista"))
+    Set<Artista> artistas = new HashSet<>();
 
     @ManyToOne()
-    @JoinColumn(name = "id_oferta", nullable = false)
+    @JoinColumn(name = "id_oferta", nullable = false, foreignKey = @ForeignKey(name = "FK_Oferta"))
     private OfertaTrabajo ofertaTrabajo;
-
-
 }

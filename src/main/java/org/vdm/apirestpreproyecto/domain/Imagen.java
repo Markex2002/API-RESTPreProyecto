@@ -24,7 +24,4 @@ public class Imagen {
     @ManyToOne()
     @JoinColumn(name = "id_artista", nullable = false)
     private Artista artista;
-
-
-
 }

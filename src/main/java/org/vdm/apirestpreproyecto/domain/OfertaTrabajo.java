@@ -36,7 +36,7 @@ public class OfertaTrabajo {
     private Date inscripcionHasta;
 
     //OneToMany en el que insertaremos una lista de idiomas
-    @OneToMany(mappedBy = "ofertaTrabajo")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "ofertaTrabajo")
     private List<Idioma> idiomasRequeridos;
 
     //ManyToOne en el que la empresa tendra varias Ofertas

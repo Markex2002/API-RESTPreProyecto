@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.vdm.apirestpreproyecto.modelo.Usuario;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -30,18 +31,17 @@ public class Artista extends Usuario {
     private int yearsOfExperience;
 
     @Column(name = "Porfolio")
-    @OneToMany(mappedBy = "artista")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "artista")
     @JsonIgnore
     @ToString.Exclude
     private List<Imagen> portfolio;
 
-    @OneToMany(mappedBy = "artista")
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "artistas")
     @JsonIgnore
     @ToString.Exclude
-    private List<Idioma> idiomasHablados;
+    private List<Idioma> idiomasHablados = new ArrayList<>();
 
-    @ManyToMany(
-            mappedBy = "artistas")
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "artistas")
     @ToString.Exclude
     @JsonIgnore
     Set<OfertaTrabajo> ofertasTrabajos = new HashSet<>();

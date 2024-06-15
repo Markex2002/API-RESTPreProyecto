@@ -12,8 +12,8 @@ import java.util.List;
 public interface OfertaRepository extends JpaRepository<OfertaTrabajo, Long> {
     //BUSCAMOS POR SALARIO BRUTO MINIMO
     public List<OfertaTrabajo> findBySalarioBrutoMinGreaterThan(int cantidadMin);
-    public List<OfertaTrabajo> findBySalarioBrutoMinGreaterThanOrderBySalarioBrutoMinAsc(int nombre);
-    public List<OfertaTrabajo> findBySalarioBrutoMinGreaterThanOrderBySalarioBrutoMinDesc(int nombre);
+    public List<OfertaTrabajo> findBySalarioBrutoMinGreaterThanOrderBySalarioBrutoMinAsc(int cantidadMin);
+    public List<OfertaTrabajo> findBySalarioBrutoMinGreaterThanOrderBySalarioBrutoMinDesc(int cantidadMin);
 
 
     //ORDENAMOS POR FECHA PUBLICACION

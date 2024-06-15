@@ -26,7 +26,7 @@ public class Empresa extends Usuario {
     private String nombreRepresentante;
 
 
-    @OneToMany(mappedBy = "empresa")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "empresa")
     @JsonIgnore
     @ToString.Exclude
     private List<OfertaTrabajo> listadoOfertas;
