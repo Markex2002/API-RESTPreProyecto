@@ -5,11 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.vdm.apirestpreproyecto.domain.Artista;
 import org.vdm.apirestpreproyecto.domain.Empresa;
-import org.vdm.apirestpreproyecto.dto.ArtistaDTO;
-import org.vdm.apirestpreproyecto.dto.ArtistaMapper;
-import org.vdm.apirestpreproyecto.service.ArtistaService;
 import org.vdm.apirestpreproyecto.service.EmpresaService;
 
 import java.util.ArrayList;
@@ -20,7 +16,7 @@ import java.util.Optional;
 @Slf4j
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
-@RequestMapping("/empresas")
+@RequestMapping("/v1/api/empresas")
 public class EmpresaController {
     private final EmpresaService empresaService;
 

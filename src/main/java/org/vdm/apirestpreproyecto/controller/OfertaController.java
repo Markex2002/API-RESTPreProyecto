@@ -5,9 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.vdm.apirestpreproyecto.domain.Imagen;
 import org.vdm.apirestpreproyecto.domain.OfertaTrabajo;
-import org.vdm.apirestpreproyecto.service.ImagenService;
 import org.vdm.apirestpreproyecto.service.OfertaService;
 
 import java.util.List;
@@ -17,7 +15,7 @@ import java.util.Optional;
 @Slf4j
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
-@RequestMapping("/ofertas")
+@RequestMapping("/v1/api/ofertas")
 public class OfertaController {
     private final OfertaService ofertaService;
 
@@ -49,7 +47,7 @@ public class OfertaController {
     public ResponseEntity<Map<String, Object>> all(@RequestParam(value = "pagina", defaultValue = "0") int pagina
             , @RequestParam(value = "tamanio", defaultValue = "3") int tamanio){
 
-        log.info("Accediendo a todas las Ofertas con Paginacion");
+        log.info("Accediendo a todos los Administradores con Paginacion");
         Map<String, Object> responseAll = this.ofertaService.all(pagina, tamanio);
 
         return ResponseEntity.ok(responseAll);

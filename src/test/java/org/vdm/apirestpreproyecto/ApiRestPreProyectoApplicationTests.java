@@ -1,19 +1,22 @@
 package org.vdm.apirestpreproyecto;
 
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.vdm.apirestpreproyecto.domain.*;
-import org.vdm.apirestpreproyecto.repository.*;
 import org.vdm.apirestpreproyecto.service.*;
 
-import java.math.BigDecimal;
+
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.*;
 
 @SpringBootTest
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class ApiRestPreProyectoApplicationTests {
 
     @Autowired
@@ -36,6 +39,7 @@ class ApiRestPreProyectoApplicationTests {
 
 
     @Test
+    @Order(7)
     void testPersistenciaOneToMany() {
         List<Imagen> listaImagenes = artistaService.one(1L).getPortfolio();
         listaImagenes.forEach(imagen -> System.out.println(imagen.getNombre()));
@@ -45,12 +49,8 @@ class ApiRestPreProyectoApplicationTests {
     //TESTPRINCIPAL
     //PRUEBA DE TODOS LOS CRUDS Y CREACION DE RELACIONES
     @Test
+    @Order(5)
     void pruebaCRUDTodo(){
-        pruebaCRUDArtista();
-        pruebaCRUDEmpresa();
-        pruebaCRUDAdministrador();
-        pruebaCRUDImagen();
-
         /////ESTO NO ES NECESARIO, EL PORTFOLIO SE CREA SOLO/////
         //Creamos un PortFolio y lo insertamos en el Artista//
         //List<Imagen> listaImagenes = imagenService.all();
@@ -82,7 +82,7 @@ class ApiRestPreProyectoApplicationTests {
         //PRUEBA DE LA CREACION DE MANYTOMANY//
         //CREAMOS VARIAS OFERTAS DE TRABAJO//
         OfertaTrabajo ofertaTrabajo1 = OfertaTrabajo.builder()
-                .empresa(empresaService.one(1L))
+                .empresa(empresaService.one(5L))
                 .duracionJornada(20)
                 .avaiablePositions(2)
                 .salarioBrutoMin(10000)
@@ -91,7 +91,7 @@ class ApiRestPreProyectoApplicationTests {
                 .build();
         ofertaService.save(ofertaTrabajo1);
         OfertaTrabajo ofertaTrabajo2 = OfertaTrabajo.builder()
-                .empresa(empresaService.one(2L))
+                .empresa(empresaService.one(6L))
                 .duracionJornada(20)
                 .avaiablePositions(2)
                 .salarioBrutoMin(6000)
@@ -100,7 +100,7 @@ class ApiRestPreProyectoApplicationTests {
                 .build();
         ofertaService.save(ofertaTrabajo2);
         OfertaTrabajo ofertaTrabajo3 = OfertaTrabajo.builder()
-                .empresa(empresaService.one(1L))
+                .empresa(empresaService.one(5L))
                 .duracionJornada(20)
                 .avaiablePositions(1)
                 .salarioBrutoMin(12000)
@@ -108,29 +108,33 @@ class ApiRestPreProyectoApplicationTests {
                 .artistas(listaArtistas3)
                 .build();
         ofertaService.save(ofertaTrabajo3);
-
-
-        //LLamamos al test de Idioma
-        pruebaCRUDIdioma();
     }
 
     /////PRUEBA DEL CRUD DE ARTISTA/////
     @Test
+    @Order(1)
     void pruebaCRUDArtista(){
         //CREAR
         //PRUEBA CREAR Y GUARDAR VARIOS ARTISTA
         Artista artista1 = Artista.builder()
                 .nombre("VanGogh")
+                .username("Markex133")
+                .password("1234")
+                .email("email@gmail.com")
                 .yearsOfExperience(6)
                 .build();
         artistaService.save(artista1);
         Artista artista2 = Artista.builder()
                 .nombre("SrPelo")
+                .username("MrPlXx")
+                .password("1234")
                 .yearsOfExperience(4)
                 .build();
         artistaService.save(artista2);
         Artista artista3 = Artista.builder()
                 .nombre("Markex")
+                .password("psswd")
+                .username("markex2002")
                 .yearsOfExperience(10)
                 .build();
         artistaService.save(artista3);
@@ -146,12 +150,15 @@ class ApiRestPreProyectoApplicationTests {
 
     /////PRUEBA DEL CRUD DE EMPRESA/////
     @Test
+    @Order(2)
     void pruebaCRUDEmpresa(){
         //CREAR
         //PRUEBA CREAR Y GUARDAR VARIAS EMPRESAS
         Empresa empresa1 = Empresa.builder()
                 .nombreEmpresa("Nintendo")
                 .numTlf(521522523)
+                .password("1234")
+                .email("nintendo@gmail.com")
                 .nombreRepresentante("Pedro")
                 .build();
         EmpresaService.save(empresa1);
@@ -185,12 +192,15 @@ class ApiRestPreProyectoApplicationTests {
 
     /////PRUEBA DEL CRUD DE ADMINISTRADOR/////
     @Test
+    @Order(3)
     void pruebaCRUDAdministrador(){
         //CREAR
         //PRUEBA CREAR Y GUARDAR VARIOS ADMINISTRADORES
         Administrador administrador1 = Administrador.builder()
                 .privilegeLevel(1)
                 .nombre("Maximo")
+                .email("admin@gmail.com")
+                .password("1234Admin")
                 .build();
         administradorService.save(administrador1);
         Administrador administrador2 = Administrador.builder()
@@ -210,7 +220,7 @@ class ApiRestPreProyectoApplicationTests {
         administradorService.save(administrador4);
 
         //BORRAR
-        administradorService.delete(4L);
+        administradorService.delete(12L);
 
         //EDITAR
         administrador1.setNombre("Waluigi");
@@ -219,6 +229,7 @@ class ApiRestPreProyectoApplicationTests {
 
     /////PRUEBA DEL CRUD DE IDIOMAS/////
     @Test
+    @Order(6)
     void pruebaCRUDIdioma(){
         //IMPORTANTE TENER ARTISTAS EN LA DB//
         //Creamos una lista con el Artista//
@@ -281,6 +292,7 @@ class ApiRestPreProyectoApplicationTests {
 
     /////PRUEBA DEL CRUD DE IMAGEN/////
     @Test
+    @Order(4)
     void pruebaCRUDImagen(){
         //Importante que esto no este vacio o fallará
         Artista artista = artistaService.one(1L);

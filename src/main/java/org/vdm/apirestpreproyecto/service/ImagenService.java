@@ -53,7 +53,7 @@ public class ImagenService {
 
     public Imagen replace(Long id, Imagen imagen) {
 
-        return this.imagenRepository.findById(id).map(p -> (id.equals(imagen.getId())  ?
+        return this.imagenRepository.findById(id).map(p -> (id.equals(imagen.getIdImagen())  ?
                                                             this.imagenRepository.save(imagen) : null))
                 .orElseThrow(() -> new ImagenNotFoundException(id));
     }

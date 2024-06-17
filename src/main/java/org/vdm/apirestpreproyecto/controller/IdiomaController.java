@@ -6,9 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.vdm.apirestpreproyecto.domain.Idioma;
-import org.vdm.apirestpreproyecto.domain.OfertaTrabajo;
 import org.vdm.apirestpreproyecto.service.IdiomaService;
-import org.vdm.apirestpreproyecto.service.OfertaService;
 
 import java.util.List;
 import java.util.Map;
@@ -17,7 +15,7 @@ import java.util.Optional;
 @Slf4j
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
-@RequestMapping("/idiomas")
+@RequestMapping("/v1/api/idiomas")
 public class IdiomaController {
     private final IdiomaService idiomaService;
 

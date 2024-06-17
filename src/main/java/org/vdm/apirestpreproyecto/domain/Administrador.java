@@ -2,22 +2,26 @@ package org.vdm.apirestpreproyecto.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.vdm.apirestpreproyecto.modelo.Usuario;
+
+
 
 
 @Entity
+@DiscriminatorValue("Administrador")
 
-@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class Administrador extends Usuario {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @EqualsAndHashCode.Include
-    private long id;
     private String nombre;
     private int privilegeLevel;
+
+    @Builder
+    public Administrador(long id, String username, String password, String email, String nombre, int privilegeLevel) {
+        super(id, username, password, email);
+        this.nombre = nombre;
+        this.privilegeLevel = privilegeLevel;
+    }
 }

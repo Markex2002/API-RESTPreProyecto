@@ -26,7 +26,7 @@ public class ArtistaService {
     }
 
     public Map<String, Object> all(int pagina, int tamanio) {
-        Pageable paginado = PageRequest.of(pagina, tamanio, Sort.by("id_artista").ascending());
+        Pageable paginado = PageRequest.of(pagina, tamanio, Sort.by("id").ascending());
 
         Page<Artista> pageAll = this.artistaRepository.findAll(paginado);
         Map<String, Object> response = new HashMap<>();
@@ -50,7 +50,7 @@ public class ArtistaService {
 
     public Artista replace(Long id, Artista artista) {
 
-        return this.artistaRepository.findById(id).map( p -> (id.equals(artista.getId_artista())  ?
+        return this.artistaRepository.findById(id).map( p -> (id.equals(artista.getId())  ?
                                                             this.artistaRepository.save(artista) : null))
                 .orElseThrow(() -> new ArtistaNotFoundException(id));
     }

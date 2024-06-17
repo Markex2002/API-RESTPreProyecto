@@ -7,11 +7,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.vdm.apirestpreproyecto.Exception.AdministradorNotFoundException;
-import org.vdm.apirestpreproyecto.Exception.EmpresaNotFoundException;
 import org.vdm.apirestpreproyecto.domain.Administrador;
-import org.vdm.apirestpreproyecto.domain.Empresa;
 import org.vdm.apirestpreproyecto.repository.AdministradorRepository;
-import org.vdm.apirestpreproyecto.repository.EmpresaRepository;
 
 import java.util.*;
 

@@ -5,9 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.vdm.apirestpreproyecto.domain.Administrador;
 import org.vdm.apirestpreproyecto.domain.Imagen;
-import org.vdm.apirestpreproyecto.service.AdministradorService;
 import org.vdm.apirestpreproyecto.service.ImagenService;
 
 import java.util.List;
@@ -17,7 +15,7 @@ import java.util.Optional;
 @Slf4j
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
-@RequestMapping("/imagenes")
+@RequestMapping("/v1/api/imagenes")
 public class ImagenController {
     private final ImagenService imagenService;
 

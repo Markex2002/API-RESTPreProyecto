@@ -17,11 +17,11 @@ public class Imagen {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    private long id;
+    private long idImagen;
     private String url;
     private String nombre;
 
     @ManyToOne()
-    @JoinColumn(name = "id_artista", nullable = false)
+    @JoinColumn(name = "id", nullable = false)
     private Artista artista;
 }

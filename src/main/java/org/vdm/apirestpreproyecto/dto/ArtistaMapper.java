@@ -5,11 +5,10 @@ import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 import org.vdm.apirestpreproyecto.domain.Artista;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface ArtistaMapper {
 
     ArtistaMapper INSTANCE = Mappers.getMapper(ArtistaMapper.class);
 
-    @Mapping(source = "id_artista", target = "id_artista")
     ArtistaDTO artistaAArtistaDTO(Artista artista);
 }

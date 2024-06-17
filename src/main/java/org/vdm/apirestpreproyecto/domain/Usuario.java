@@ -1,14 +1,12 @@
-package org.vdm.apirestpreproyecto.modelo;
+package org.vdm.apirestpreproyecto.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="product_type",
+        discriminatorType = DiscriminatorType.STRING)
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 
@@ -24,6 +22,4 @@ public class Usuario {
     private String username;
     private String password;
     private String email;
-
-
 }

@@ -34,7 +34,7 @@ public class Idioma {
     @JoinTable(
             name = "idioma_artista",
             joinColumns = @JoinColumn(name = "id_Idioma", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "id_artista", referencedColumnName = "id_artista"))
+            inverseJoinColumns = @JoinColumn(name = "id", referencedColumnName = "id"))
     Set<Artista> artistas = new HashSet<>();
 
     @ManyToOne()

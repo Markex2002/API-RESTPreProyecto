@@ -18,7 +18,7 @@ import java.util.Optional;
 @Slf4j
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
-@RequestMapping("/artistas")
+@RequestMapping("/v1/api/artistas")
 public class ArtistaController {
     private final ArtistaService artistaService;
 

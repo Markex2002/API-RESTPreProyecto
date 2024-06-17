@@ -37,11 +37,13 @@ public class OfertaTrabajo {
 
     //OneToMany en el que insertaremos una lista de idiomas
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "ofertaTrabajo")
+    @JsonIgnore
+    @ToString.Exclude
     private List<Idioma> idiomasRequeridos;
 
     //ManyToOne en el que la empresa tendra varias Ofertas
     @ManyToOne()
-    @JoinColumn(name = "id_empresa", nullable = false)
+    @JoinColumn(name = "id", nullable = false)
     private Empresa empresa;
 
 
@@ -50,6 +52,6 @@ public class OfertaTrabajo {
     @JoinTable(
             name = "ofertaTrabajo_artista",
             joinColumns = @JoinColumn(name = "id_oferta", referencedColumnName = "id_oferta"),
-            inverseJoinColumns = @JoinColumn(name = "id_artista", referencedColumnName = "id_artista"))
+            inverseJoinColumns = @JoinColumn(name = "id", referencedColumnName = "id"))
     Set<Artista> artistas = new HashSet<>();
 }
