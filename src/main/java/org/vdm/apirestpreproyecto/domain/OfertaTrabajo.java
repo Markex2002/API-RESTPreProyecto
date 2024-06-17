@@ -52,6 +52,6 @@ public class OfertaTrabajo {
     @JoinTable(
             name = "ofertaTrabajo_artista",
             joinColumns = @JoinColumn(name = "id_oferta", referencedColumnName = "id_oferta"),
-            inverseJoinColumns = @JoinColumn(name = "id", referencedColumnName = "id"))
+            inverseJoinColumns = @JoinColumn(name = "id_artista", referencedColumnName = "id"))
     Set<Artista> artistas = new HashSet<>();
 }
