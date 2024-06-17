@@ -29,7 +29,7 @@ public class OfertaService {
     }
 
     public Map<String, Object> all(int pagina, int tamanio) {
-        Pageable paginado = PageRequest.of(pagina, tamanio, Sort.by("id").ascending());
+        Pageable paginado = PageRequest.of(pagina, tamanio, Sort.by("id_oferta").ascending());
 
         Page<OfertaTrabajo> pageAll = this.ofertaRepository.findAll(paginado);
         Map<String, Object> response = new HashMap<>();

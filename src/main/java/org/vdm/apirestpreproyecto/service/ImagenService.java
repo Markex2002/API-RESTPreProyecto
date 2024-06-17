@@ -29,7 +29,7 @@ public class ImagenService {
     }
 
     public Map<String, Object> all(int pagina, int tamanio) {
-        Pageable paginado = PageRequest.of(pagina, tamanio, Sort.by("id").ascending());
+        Pageable paginado = PageRequest.of(pagina, tamanio, Sort.by("idImagen").ascending());
 
         Page<Imagen> pageAll = this.imagenRepository.findAll(paginado);
         Map<String, Object> response = new HashMap<>();
